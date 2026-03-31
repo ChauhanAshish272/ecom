@@ -20,6 +20,8 @@ public class Product {
 
     String name;
 
+    Double price;
+
     String description;
 
     String brand;
@@ -29,13 +31,17 @@ public class Product {
     @Enumerated(EnumType.STRING)
     Status status;
 
-    Boolean available;
+    Boolean available=true;
 
-    Boolean active;
+    Boolean active=true;
 
-    Boolean deleted;
+    Boolean deleted=false;
 
     LocalDateTime createdAt;
 
     LocalDateTime updatedAt;
+
+    String createdBy;
+
+    String modifiedBy;
 }
