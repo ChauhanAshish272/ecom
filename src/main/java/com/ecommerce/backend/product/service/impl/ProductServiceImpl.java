@@ -5,6 +5,7 @@ import com.ecommerce.backend.product.model.dto.CreateProductRequestDto;
 import com.ecommerce.backend.product.model.dto.ProductDto;
 import com.ecommerce.backend.product.model.dto.UpdateProductRequestDto;
 import com.ecommerce.backend.product.model.entity.Product;
+import com.ecommerce.backend.product.model.enums.ProductStatus;
 import com.ecommerce.backend.product.repository.ProductRepository;
 import com.ecommerce.backend.product.service.ProductService;
 import com.ecommerce.backend.product.util.ProductUtil;
@@ -96,5 +97,17 @@ public class ProductServiceImpl implements ProductService {
         return "Product deleted Successfully";
     }
 
+    public String updateProductStatus(Long productId, ProductStatus newStatus) {
 
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        if (product.getProductStatus() == ProductStatus.DISCONTINUED) {
+            throw new RuntimeException("Cannot update discontinued product");
+        }
+
+        product.setProductStatus(newStatus);
+        productRepository.save(product);
+        return "Product Status updated Successfully";
+    }
 }

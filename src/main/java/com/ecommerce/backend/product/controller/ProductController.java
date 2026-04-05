@@ -4,6 +4,7 @@ import com.ecommerce.backend.product.model.dto.CreateProductRequestDto;
 import com.ecommerce.backend.product.model.dto.ProductDto;
 import com.ecommerce.backend.product.model.dto.ResponseDto;
 import com.ecommerce.backend.product.model.dto.UpdateProductRequestDto;
+import com.ecommerce.backend.product.model.enums.ProductStatus;
 import com.ecommerce.backend.product.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -80,6 +81,17 @@ public class ProductController {
         log.info("Request received for ::Deleting product");
         String response = service.deleteProduct(id);
         log.info("Response received for ::Deleting product");
+        return new ResponseDto<>(
+                true,
+                response
+        );
+    }
+
+    @PatchMapping("/update/status/{id}")
+    public ResponseDto<?> updateProductStatus(@PathVariable Long id, ProductStatus status) {
+        log.info("Request received for ::Updating product Status");
+        String response = service.updateProductStatus(id, status);
+        log.info("Response received for ::Updating product Status");
         return new ResponseDto<>(
                 true,
                 response
