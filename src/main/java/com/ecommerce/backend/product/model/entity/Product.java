@@ -1,6 +1,6 @@
 package com.ecommerce.backend.product.model.entity;
 
-import com.ecommerce.backend.product.model.enums.Status;
+import com.ecommerce.backend.product.model.enums.ProductStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,13 +29,13 @@ public class Product {
     String category;
 
     @Enumerated(EnumType.STRING)
-    Status status;
+    ProductStatus productStatus;
 
-    Boolean available=true;
+    Boolean available = true;
 
-    Boolean active=true;
+    Boolean active = true;
 
-    Boolean deleted=false;
+    Boolean deleted = false;
 
     LocalDateTime createdAt;
 

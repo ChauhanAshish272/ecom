@@ -12,7 +12,7 @@ public class ProductUtil {
                 .productCategory(product.getCategory())
                 .productBrand(product.getBrand())
                 .productDescription(product.getDescription())
-                .productStatus(product.getStatus().toString())
+                .productStatus(product.getProductStatus().toString())
                 .productAvailable(product.getAvailable())
                 .createdAt(product.getCreatedAt().toString())
                 .updatedAt(product.getUpdatedAt().toString())
