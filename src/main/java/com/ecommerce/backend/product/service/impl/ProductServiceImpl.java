@@ -8,7 +8,7 @@ import com.ecommerce.backend.product.model.entity.Product;
 import com.ecommerce.backend.product.model.enums.ProductStatus;
 import com.ecommerce.backend.product.repository.ProductRepository;
 import com.ecommerce.backend.product.service.ProductService;
-import com.ecommerce.backend.product.util.ProductUtil;
+import com.ecommerce.backend.product.util.CommonUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,12 +26,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDto> fetchAllProducts() {
         log.info("Fetching all products");
-        return productRepository.findAll().stream().map(ProductUtil::mapToProductDto).toList();
+        return productRepository.findAll().stream().map(CommonUtil::mapToProductDto).toList();
     }
 
     @Override
     public ProductDto fetchProductById(Long id) {
-        return ProductUtil
+        return CommonUtil
                 .mapToProductDto(
                         productRepository.findById(id)
                                 .orElseThrow(() -> {
@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto createProduct(CreateProductRequestDto productDto) {
         log.info("Creating product {}", productDto);
-        return ProductUtil.mapToProductDto(productRepository.save(Product.builder()
+        return CommonUtil.mapToProductDto(productRepository.save(Product.builder()
                 .name(productDto.getProductName())
                 .description(productDto.getProductDescription())
                 .productStatus(productDto.getProductStatus())
@@ -81,7 +81,7 @@ public class ProductServiceImpl implements ProductService {
             product.setPrice(productDto.getProductPrice());
         }
         Product savedProduct = productRepository.save(product);
-        return ProductUtil.mapToProductDto(savedProduct);
+        return CommonUtil.mapToProductDto(savedProduct);
     }
 
     @Override
