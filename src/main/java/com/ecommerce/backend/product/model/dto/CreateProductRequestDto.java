@@ -1,6 +1,6 @@
 package com.ecommerce.backend.product.model.dto;
 
-import com.ecommerce.backend.product.model.enums.Status;
+import com.ecommerce.backend.product.model.enums.ProductStatus;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +29,5 @@ public class CreateProductRequestDto {
     private String productCategory;
 
     @NotBlank
-    private Status productStatus;
+    private ProductStatus productStatus;
 }
