@@ -14,16 +14,24 @@ import java.time.LocalDateTime;
 @Builder
 public class UserDto {
 
-    private Long userId;
-    private String userFirstName;
-    private String userLastName;
-    private String userEmail;
-    private Boolean userActive;
-    private Boolean userVerified;
-    private Boolean userDeleted;
-    private LocalDateTime userCreatedAt;
-    private LocalDateTime userUpdatedAt;
-    private String userModifiedBy;
-    private String userDeletedBy;
-    private UserStatus userStatus;
+    private Long id;
+
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String mobileNumber;
+    private String gender;
+    private LocalDateTime dateOfBirth;
+
+    private String address;
+    private String city;
+    private String state;
+    private String country;
+    private String postalCode;
+
+    private Boolean isActive;
+    private Boolean emailVerified;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
